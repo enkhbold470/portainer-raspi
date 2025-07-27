@@ -1,0 +1,15 @@
+
+services:
+  heimdall:
+    image: lscr.io/linuxserver/heimdall:latest
+    container_name: heimdall
+    environment:
+      - PUID=1000            # User ID for file permissions
+      - PGID=1000            # Group ID for file permissions
+      - TZ=America/Los_Angeles  # Set to your timezone
+    volumes:
+      - ./config:/config     # Persist config files on host
+    ports:
+      - 80:80                # Map host port 80 to container port 80
+    restart: unless-stopped   # Always restart unless stopped manually
+
